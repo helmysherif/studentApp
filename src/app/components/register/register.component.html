@@ -1,0 +1,54 @@
+<div class="container my-5 w-75 mx-auto">
+    <h1 class = "text-center mb-4">Register Form</h1>
+    <div *ngIf = "flag" class="alert alert-danger text-center m-auto">
+        <h5 class = "p-0 m-0">This Email Already Exists</h5>
+    </div>
+    <form [formGroup]='registerForm' (ngSubmit)="getRegisterInfo(registerForm)"> 
+        <div class="form-group my-4">
+            <label>First Name:</label>
+            <input 
+                [class.is-valid] = "registerForm.controls.first_name.errors == null && registerForm.controls.first_name.touched" 
+                [class.is-invalid] = "registerForm.controls.first_name.errors != null && registerForm.controls.first_name.touched" 
+                type="text" 
+                class="form-control" 
+                formControlName = 'first_name'
+            >
+            <p *ngIf = "registerForm.controls.first_name.errors != null && registerForm.controls.first_name.touched" class = "text-danger py-2">FirstName Invalid</p>
+        </div>
+        <div class="form-group my-4">
+            <label>Last Name:</label>
+            <input 
+                [class.is-valid] = "registerForm.controls.last_name.errors == null && registerForm.controls.last_name.touched" 
+                [class.is-invalid] = "registerForm.controls.last_name.errors != null && registerForm.controls.last_name.touched" 
+                type="text" 
+                class="form-control" 
+                formControlName = 'last_name'
+            >
+            <p *ngIf = "registerForm.controls.last_name.errors != null && registerForm.controls.last_name.touched" class = "text-danger py-2">LastName Invalid</p>
+        </div>
+        <div class="form-group my-4">
+            <label>Email:</label>
+            <input 
+                [class.is-valid] = "registerForm.controls.email.errors == null && registerForm.controls.email.touched"
+                [class.is-invalid] = "registerForm.controls.email.errors != null && registerForm.controls.email.touched" 
+                type="email" 
+                class="form-control" 
+                formControlName = 'email'
+            >
+            <p *ngIf = "registerForm.controls.email.errors != null && registerForm.controls.email.touched" class = "text-danger py-2">Email Invalid</p>
+        </div>
+        <div class="form-group my-4">
+            <label>Password:</label>
+            <input 
+                [class.is-valid] = "registerForm.controls.password.errors == null && registerForm.controls.password.touched" 
+                [class.is-invalid] = "registerForm.controls.password.errors != null && registerForm.controls.password.touched" 
+                type="password" 
+                class="form-control" 
+                formControlName = 'password'
+            >
+            <p *ngIf = "registerForm.controls.password.errors != null && registerForm.controls.password.touched" class = "text-danger pt-2">Password Invalid</p>
+            <p *ngIf = "pattern.test(registerForm.controls.password.value) == false && registerForm.controls.password.touched && registerForm.controls.password.errors != null" class = "text-danger p-0">the Password must have Minimum eight characters, at least one letter and one number</p>
+        </div>
+        <button [disabled] = "registerForm.invalid" class = "btn btn-info w-100">Register</button>
+    </form>
+</div>

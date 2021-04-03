@@ -1,0 +1,12 @@
+<div class="container my-5">
+    <h1 class = "text-center mb-4">All Students</h1>
+    <div class="row">
+        <div class="col-md-3 mb-4" *ngFor = "let student of students">
+            <a routerLink = "/studentDetail/{{ student.id }}">
+                <img [src]="student.avatar" class = "img-fluid w-100" alt="">
+            </a>
+            <p class = "text-center mt-3 h4">{{ student.first_name }} {{ student.last_name }}</p>
+        </div>
+    </div>
+    <a routerLink = "/students" class = "btn btn-info w-100">View All Students</a>
+</div>

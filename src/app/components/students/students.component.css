@@ -1,0 +1,15 @@
+td{
+    color:#fff;
+}
+.form-group
+{
+    display: flex;
+}
+.form-group label
+{
+    margin-right: 15px;
+}
+tbody tr
+{
+    line-height:115px;
+}
